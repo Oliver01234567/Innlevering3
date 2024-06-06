@@ -1,2 +1,2 @@
 # Innlevering3
-Spill, ikke helt ferdig :c
+Ikke helt ferdig spill, men greit med features tror jeg
