@@ -1,0 +1,902 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #eee;
+}
+
+#game-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #a2d5f2;
+}
+
+#egg-container {
+    width: 20%;
+    height: 100%;
+    background-color: #7fb77e;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 45px;
+    padding-right: 15px;
+}
+
+.egg {
+    position: relative;
+    width: 40px;
+    height: 60px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.egg-slots {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    border: 3px solid white;
+    padding: 2px;
+}
+
+.eggSlot {
+    position: relative; 
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.chance {
+    position: absolute;
+    bottom: 0px; 
+    right: 0px; 
+    font-size: 5px; 
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 2px 4px; 
+    border-radius: 3px; 
+}
+
+.buyEggsBtn {
+    position: absolute;
+}
+
+.egg:first-child {
+    margin-top: 40px;
+}
+
+.egg:last-child {
+    margin-bottom: 40px;
+}
+
+.minecraftEgg {
+    background-image: url('Bilder/egg1.png');
+    background-size: cover;
+    width: 55px;
+    margin-left: 9px;
+}
+
+.celebrityEgg {
+    background-image: url('Bilder/egg2.png');
+    background-size: cover;
+    width: 45px;
+}
+
+.famguyEgg {
+    background-image: url('Bilder/egg3.png');
+    background-size: cover;
+    height: 70px;
+    width: 120px;
+    margin-left: -20px;
+}
+
+.animalEgg {
+    background-image: url('Bilder/egg4.png');
+    background-size: cover;
+    width: 45px;
+    margin-left: 17px;
+}
+
+.pokemonEgg {
+    background-image: url('Bilder/egg5.png');
+    background-size: cover;
+    width: 50px;
+    height: 62px;
+}
+
+.chicken {
+    background-image: url('Bilder/chicken.png');
+    background-size: cover;
+}
+
+.zombie {
+    background-image: url('Bilder/zombie.png');
+    background-size: cover;
+}
+
+.pete {
+    background-image: url('Bilder/pete.png');
+    background-size: cover;
+}
+
+.rock {
+    background-image: url('Bilder/rock.png');
+    background-size: cover;
+}
+
+.kanye {
+    background-image: url('Bilder/kanye.png');
+    background-size: cover;
+}
+
+.steve {
+    background-image: url('Bilder/steve.png');
+    background-size: cover;
+}
+
+.stewie {
+    background-image: url('Bilder/stewie.png');
+    background-size: cover;
+}
+
+.peter {
+    background-image: url('Bilder/peter.png');
+    background-size: cover;
+}
+
+.brian {
+    background-image: url('Bilder/brian.png');
+    background-size: cover;
+}
+
+.monke {
+    background-image: url('Bilder/monke.png');
+    background-size: cover;
+}
+
+.sid {
+    background-image: url('Bilder/sid.png');
+    background-size: cover;
+}
+
+.capybara {
+    background-image: url('Bilder/capybara.png');
+    background-size: cover;
+}
+
+.panda {
+    background-image: url('Bilder/panda.png');
+    background-size: cover;
+}
+
+.pikachu {
+    background-image: url('Bilder/pikachu.png');
+    background-size: cover;
+}
+
+.squirtle {
+    background-image: url('Bilder/squirtle.png');
+    background-size: cover;
+}
+
+.charmander {
+    background-image: url('Bilder/charmander.png');
+    background-size: cover;
+}
+
+.infernape {
+    background-image: url('Bilder/infernape.png');
+    background-size: cover;
+}
+
+#objects-container {
+    position: relative;
+    width: 80%;
+    height: 100%;
+}
+
+.player {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('Bilder/rasmus.png');
+    background-size: cover;
+    border-radius: 50%;
+    transition: transform 0.1s;
+    z-index: 101;
+}
+
+.familiar {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    border-radius: 50%;
+    transition: transform linear 0.5s;
+    z-index: 102;
+}
+
+.object {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('Bilder/singularCoin.png');
+    background-size: cover;
+}
+
+.health-bar {
+    width: 50px;
+    height: 5px;
+    background-color: green;
+    margin-top: 5px;
+}
+
+/*Upgrades menu*/
+#upgrades-menu {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    z-index: 9999;
+    width: 300px;
+    max-width: 90%;
+}
+
+#upgrades-menu h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+#upgrades-menu button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    position: relative;
+    width: 100%;
+}
+
+#upgrades-menu button:hover {
+    background-color: #45a049;
+}
+
+#upgrades-menu button .tooltip {
+    visibility: hidden;
+    width: 140px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+}
+
+#upgrades-menu button:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+#upgrades-menu button .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+
+.close-button {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: red;
+}
+
+/*Achievments menu*/
+.hidden {
+    display: none;
+}
+
+#achievements-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+}
+
+.achievements-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.menu-header h2 {
+    margin: 0;
+}
+
+.achievement-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.achievement-box {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-box h3 {
+    margin-top: 0;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress {
+    height: 10px;
+    background-color: #76c7c0;
+    width: 0%;
+}
+
+/*Inventory Menu*/
+#inventory-menu {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    z-index: 9999;
+    width: 500px;
+    height: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#inventory-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+    position: relative;
+}
+
+#inventory-header span {
+    border-bottom: 2px solid #ccc;
+}
+
+#inventory-header button {
+    background-color: #4CAF50;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#inventory-header button:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+#inventory-header span {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+#pet-slots {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    width: fit-content;
+}
+
+.petSlot {
+    width: 50px;
+    height: 50px;
+    background-color: lightgray;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background-size: cover;
+}
+
+/* Tutorial Page */
+#tutorialPage {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+    z-index: 10000;
+}
+
+#tutorialPage.hidden {
+    display: none;
+}
+
+#tutorialPage h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.tutorial-section {
+    margin-bottom: 20px;
+}
+
+.tutorial-section h2 {
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.tutorial-section p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.tutorial-section img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/*Main menu*/
+.menu-button {
+    position: absolute;
+    top: 350px;
+    right: 5px;
+    height: 100px;
+    width: 100px;
+    z-index: 9999;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.9;
+    border-radius: 20%;
+}
+
+.circular-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9998;
+    width: 480px;
+    height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.circular-menu.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-circle {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+}
+
+#inventory {
+    top: -100px;
+}
+
+#upgrades {
+    right: -100px;
+}
+
+#achievements {
+    left: -100px;
+}
+
+#tutorial {
+    bottom: -100px;
+}
+
+/*Money*/
+.moneyContainer {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 215, 0, 0.7);
+    padding: 10px;
+    border: 3px solid #88540B;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    z-index: 10090;
+}
+
+.moneyBox {
+    margin-right: 7px;
+}
+
+.moneyBox span {
+    font-size: 20px;
+    color: var(--moneyBox);
+    margin-right: 3px;
+}
+
+#freeMoneyButton {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px;
+    background-color: goldenrod;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Diamonds */
+.diamondContainer {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    background-color: rgba(173, 216, 230, 0.7);
+    padding: 10px;
+    border: 3px solid #1E90FF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    z-index: 10090;
+}
+
+.diamondBox {
+    margin-right: 7px;
+}
+
+.diamondBox span {
+    font-size: 20px;
+    color: #1E90FF;
+    margin-right: 3px;
+}
+
+#freeDiamondsButton {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid #1E90FF;
+    background-color: #1E90FF;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+/*Alert*/
+.alert {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.error {
+    background-color: #f44336;
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Wheel + egg animations */
+#spinWheel {
+    width: 75px;
+    height: 75px;
+    background-color: #ff6347;
+    /* Tomato color */
+    border: 4px solid #fff;
+    /* White border */
+    border-radius: 50%;
+    color: #fff;
+    /* White text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Add a subtle shadow */
+    position: absolute;
+    top: 10px;
+    /* Position at the top middle */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    /* Ensure it's above other elements */
+}
+
+#spinWheel:hover {
+    background-color: #ff4500;
+    /* Darker tomato color on hover */
+}
+
+.spinning-wheel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    margin-top: -250px;
+    margin-left: -250px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1001;
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.wheel-section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#wheelSection1 {
+    background-color: #FF6347;
+    clip-path: polygon(0% 10%, 50% 0%, 50% 100%, 0% 100%);
+}
+
+#wheelSection2 {
+    background-color: #90EE90;
+    clip-path: polygon(50% 50%, 35% 0%, -18% 34%);
+}
+
+#wheelSection3 {
+    background-color: #87CEFA;
+    clip-path: polygon(50% 50%, 50% 0%, 34% 0%);
+}
+
+#wheelSection4 {
+    background-color: #FFD700;
+    clip-path: polygon(50% 0%, 100% 0%, 50% 100000%, 50% 50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.arrow-down {
+    position: fixed;
+    top: 16%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #000;
+    z-index: 1001;
+}
+
+.eggImage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.clickText {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.shake {
+    animation: shakeEgg 1s;
+}
+
+@keyframes shakeEgg {
+    0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-50%, -50%) rotate(10deg); }
+    50% { transform: translate(-50%, -50%) rotate(-10deg); }
+    75% { transform: translate(-50%, -50%) rotate(10deg); }
+}
+
+.obtainedItem {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 400px;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    animation: obtainedSkinGlow 2s infinite, obtainedSkinGrow 2s ease-in-out forwards;
+}
+
+@keyframes obtainedSkinGlow {
+    0%, 100% { box-shadow: 0 0 100px yellow; }
+    50% { box-shadow: none; }
+}
+
+@keyframes obtainedSkinGrow {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-50%, -50%) scale(1.5); }
+}
+
+
+/* Pet Info Page */
+.petInfoPage {
+    position: fixed;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 2px solid black;
+    padding: 20px;
+    z-index: 1000;
+    text-align: center;
+}
+
+.petInfoPage img {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    height: auto;
+    border: 2px solid #333;
+    border-radius: 10px;
+}
+
+.petInfoPage p {
+    margin: 10px 0;
+}
+
+.petInfoPage button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.petInfoPage button:hover {
+    background-color: #c00;
+}

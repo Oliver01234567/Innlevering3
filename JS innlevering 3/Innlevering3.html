@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innlevering 3</title>
+    <link rel="stylesheet" href="Innlevering3.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <div id="egg-container">
+            <div id="egg1" class="egg minecraftEgg">
+                <button id="buyEggsBtn1" class="buyPetsBtn hidden" onclick="buyEgg(1)">E</button>
+                <div id="egg-slots1" class="egg-slots hidden">
+                    <div class="eggSlot chicken">
+                        <div class="chance">34%</div>
+                    </div>
+                    <div class="eggSlot zombie">
+                        <div class="chance">33%</div>
+                    </div>
+                    <div class="eggSlot steve">
+                        <div class="chance">33%</div>
+                    </div>
+                </div>
+            </div>
+            <div id="egg2" class="egg celebrityEgg">
+                <button id="buyEggsBtn2" class="buyPetsBtn hidden" onclick="buyEgg(2)">E</button>
+                <div id="egg-slots2" class="egg-slots hidden">
+                    <div class="eggSlot pete">
+                        <div class="chance">50%</div>
+                    </div>
+                    <div class="eggSlot rock">
+                        <div class="chance">30%</div>
+                    </div>
+                    <div class="eggSlot kanye">
+                        <div class="chance">20%</div>
+                    </div>
+                </div>
+            </div>
+            <div id="egg3" class="egg famguyEgg">
+                <button id="buyEggsBtn3" class="buyPetsBtn hidden" onclick="buyEgg(3)">E</button>
+                <div id="egg-slots3" class="egg-slots hidden">
+                    <div class="eggSlot stewie">
+                        <div class="chance">45%</div>
+                    </div>
+                    <div class="eggSlot peter">
+                        <div class="chance">40%</div>
+                    </div>
+                    <div class="eggSlot brian">
+                        <div class="chance">15%</div>
+                    </div>
+                </div>
+            </div>
+            <div id="egg4" class="egg animalEgg">
+                <button id="buyEggsBtn4" class="buyPetsBtn hidden" onclick="buyEgg(4)">E</button>
+                <div id="egg-slots4" class="egg-slots hidden">
+                    <div class="eggSlot monke">
+                        <div class="chance">40%</div>
+                    </div>
+                    <div class="eggSlot panda">
+                        <div class="chance">30%</div>
+                    </div>
+                    <div class="eggSlot sid">
+                        <div class="chance">20%</div>
+                    </div>
+                    <div class="eggSlot capybara">
+                        <div class="chance">10%</div>
+                    </div>
+                </div>
+            </div>
+            <div id="egg5" class="egg pokemonEgg">
+                <button id="buyEggsBtn5" class="buyPetsBtn hidden" onclick="buyEgg(5)">E</button>
+                <div id="egg-slots5" class="egg-slots hidden">
+                    <div class="eggSlot pikachu">
+                        <div class="chance">50%</div>
+                    </div>
+                    <div class="eggSlot squirtle">
+                        <div class="chance">35%</div>
+                    </div>
+                    <div class="eggSlot charmander">
+                        <div class="chance">10%</div>
+                    </div>
+                    <div class="eggSlot infernape">
+                        <div class="chance">5%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="player" class="player"></div>
+        <div id="familiar1" class="familiar chicken"></div>
+        <div id="familiar2" class="familiar sid"></div>
+        <div id="familiar3" class="familiar panda"></div>
+        <div id="familiar4" class="familiar pikachu"></div>
+        <div id="familiar5" class="familiar charmander"></div>
+        <div id="objects-container">
+            <div id="object1" class="object">
+                <div class="health-bar" id="health-bar1"></div>
+            </div>
+            <div id="object2" class="object">
+                <div class="health-bar" id="health-bar2"></div>
+            </div>
+            <div id="object3" class="object">
+                <div class="health-bar" id="health-bar3"></div>
+            </div>
+            <div id="object4" class="object">
+                <div class="health-bar" id="health-bar4"></div>
+            </div>
+            <div id="object5" class="object">
+                <div class="health-bar" id="health-bar5"></div>
+            </div>
+            <div id="object6" class="object">
+                <div class="health-bar" id="health-bar6"></div>
+            </div>
+            <div id="object7" class="object">
+                <div class="health-bar" id="health-bar7"></div>
+            </div>
+            <div id="object8" class="object">
+                <div class="health-bar" id="health-bar8"></div>
+            </div>
+            <div id="object9" class="object">
+                <div class="health-bar" id="health-bar9"></div>
+            </div>
+        </div>
+
+        <button class="menu-button">Menu</button>
+        <div class="circular-menu">
+            <div id="inventory" class="menu-circle">Inventory</div>
+            <div id="upgrades" class="menu-circle">Upgrades</div>
+            <div id="tutorial" class="menu-circle">Tutorial</div>
+            <div id="achievements" class="menu-circle">Achievements</div>
+        </div>
+
+        <div id="upgrades-menu">
+            <span class="close-button" onclick="closeUpgradesMenu()">×</span>
+            <h2>Upgrades Menu</h2>
+            <button onclick="upgradeMovementSpeed()" id="upgradeSpeedBtn">
+                Upgrade Movement Speed
+                <span class="tooltip">Increase your movement speed <span id="speedCostDisplay">for 10 diamonds</span></span>
+            </button>
+            <button onclick="upgradePetEquip()" id="upgradePetEquipBtn">
+                Upgrade Pet Equips
+                <span class="tooltip">Increase the amount of pets you can equip <span id="petEquipCostDisplay">for 50 diamonds</span></span>
+            </button>
+            <button onclick="upgradeCoins()" id="upgradeCoinsBtn">
+                Upgrade Coins
+                <span class="tooltip">Increase the health of and the coins earned from objects <span id="coinUpgradeCostDisplay">for 10000 coins</span></span>
+            </button>
+        </div>
+
+        <div id="achievements-menu" class="hidden">
+            <div class="achievements-header">
+                <h2>Achievements! (<span id="completedAchievements">0</span>/4 completed)</h2>
+                <span class="close-button" onclick="closeAchievementsMenu()">×</span>
+            </div>
+            <div class="achievement-grid">
+                <div id="breakObjectsBox" class="achievement-box">
+                    <h3>Object Breaker</h3>
+                    <p>Break 5 objects</p>
+                    <div class="progress-bar">
+                        <div id="breakObjectsProgress" class="progress"></div>
+                    </div>
+                    <p>Reward: 10 Diamonds</p>
+                </div>
+                <div id="gainCoinsBox" class="achievement-box">
+                    <h3>Coin Collector</h3>
+                    <p>Collect 10000 coins</p>
+                    <div class="progress-bar">
+                        <div id="gainCoinsProgress" class="progress"></div>
+                    </div>
+                    <p>Reward: 15 Diamonds</p>
+                </div>
+                <div id="playTimeBox" class="achievement-box">
+                    <h3>No-life</h3>
+                    <p>Play the game for 10 minutes</p>
+                    <div class="progress-bar">
+                        <div id="playTimeProgress" class="progress"></div>
+                    </div>
+                    <p>Reward: 100 Diamonds</p>
+                </div>
+                <div id="purchaseUpgradesBox" class="achievement-box">
+                    <h3>Upgrader</h3>
+                    <p>Make 5 upgrades</p>
+                    <div class="progress-bar">
+                        <div id="purchaseUpgradesProgress" class="progress"></div>
+                    </div>
+                    <p>Reward: 25 Diamonds</p>
+                </div>
+            </div>
+        </div>
+        <div id="inventory-menu" class="hidden">
+            <span class="close-button" onclick="closeInventoryMenu()">×</span>
+            <div id="inventory-header">
+                <button id="multiDelete">Multi Delete
+                    <div class="tooltip">Delete multiple pets at once</div>
+                </button>
+                <span>Inventory</span>
+                <button id="equipBest">Equip Pets
+                    <div class="tooltip">Choose which pets to equip</div>
+                </button>
+            </div>
+            <div id="pet-slots">
+                <div id="petSlot1" class="petSlot"></div>
+                <div id="petSlot2" class="petSlot"></div>
+                <div id="petSlot3" class="petSlot"></div>
+                <div id="petSlot4" class="petSlot"></div>
+                <div id="petSlot5" class="petSlot"></div>
+                <div id="petSlot6" class="petSlot"></div>
+                <div id="petSlot7" class="petSlot"></div>
+                <div id="petSlot8" class="petSlot"></div>
+                <div id="petSlot9" class="petSlot"></div>
+                <div id="petSlot10" class="petSlot"></div>
+                <div id="petSlot11" class="petSlot"></div>
+                <div id="petSlot12" class="petSlot"></div>
+                <div id="petSlot13" class="petSlot"></div>
+                <div id="petSlot14" class="petSlot"></div>
+                <div id="petSlot15" class="petSlot"></div>
+                <div id="petSlot16" class="petSlot"></div>
+                <div id="petSlot17" class="petSlot"></div>
+                <div id="petSlot18" class="petSlot"></div>
+                <div id="petSlot19" class="petSlot"></div>
+                <div id="petSlot20" class="petSlot"></div>
+                <div id="petSlot21" class="petSlot"></div>
+                <div id="petSlot22" class="petSlot"></div>
+                <div id="petSlot23" class="petSlot"></div>
+                <div id="petSlot24" class="petSlot"></div>
+                <div id="petSlot25" class="petSlot"></div>
+                <div id="petSlot26" class="petSlot"></div>
+                <div id="petSlot27" class="petSlot"></div>
+                <div id="petSlot28" class="petSlot"></div>
+                <div id="petSlot29" class="petSlot"></div>
+                <div id="petSlot30" class="petSlot"></div>
+                <div id="petSlot31" class="petSlot"></div>
+                <div id="petSlot32" class="petSlot"></div>
+            </div>
+        </div>
+        <div id="tutorialPage" class="hidden">
+            <span class="close-button" onclick="closeTutorialPage()">×</span>
+            <h1>Welcome to the Game Tutorial</h1>
+            <div class="tutorial-section">
+                <h2>Getting Started</h2>
+                <p>In this game, the objective is to get the best pets, finish all the achievements and upgrading everything to the max</p>
+                <p>You get money from destroying the coins spread around the map. Each coin also has a chance of dropping diamonds</p>
+            </div>
+            <div class="tutorial-section">
+                <h2>How to Play</h2>
+                <p>Move around with either "wasd" or the arrow keys</p>
+                <p>Click on the coins around the map to send your pets to attack them. If you click on a coin while all your pets are away, they will all come back to you</p>
+                <p>Buy eggs to get new pets</p>
+            </div>
+            <div class="tutorial-section">
+                <h2>Advanced Tips</h2>
+                <p>Every minute you can spin the wheel to get diamonds with the "spin" button</p>
+                <p>By upgrading the coins, coins will give more money, but they will also get more health</p>
+                <p>If you want to delete multiple pets at once, you can use the "Multi Delete" button in the inventory</p>
+                <p>You can open the menu by pressing "m"</p>
+            </div>
+        </div>
+
+        <button id="spinWheel">
+            Spin
+        </button>
+        <div id="skinWheel" class="spinning-wheel">
+            <div class="wheel-section" id="wheelSection1"></div>
+            <div class="wheel-section" id="wheelSection2"></div>
+            <div class="wheel-section" id="wheelSection3"></div>
+            <div class="wheel-section" id="wheelSection4"></div>
+        </div>
+
+        <div class="moneyContainer">
+            <div class="moneyBox">
+                <span>&#x1F4B0</span><span id="moneyAmount">0</span>
+            </div>
+            <button id="freeMoneyButton">+</button>
+        </div>
+        <div class="diamondContainer">
+            <div class="diamondBox">
+                <span>&#x1F48E</span><span id="diamondAmount">0</span>
+            </div>
+            <button id="freeDiamondsButton">+</button>
+        </div>
+    </div>
+    <script src="Innlevering3.js"></script>
+</body>
+
+</html>
